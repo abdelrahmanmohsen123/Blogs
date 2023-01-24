@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+//         Posts [ id, title, author, content,image, date , soft delete ]  
+// comments [id, post_id, user_id, comment, date, soft delete]
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('comments')->onDelete('cascade');
+            $table->text('comment');
+            $table->date('date');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('comments');
+    }
+};
