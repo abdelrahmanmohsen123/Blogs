@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePostRequest extends FormRequest
@@ -24,7 +25,7 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|regex:/^[a-zA-Z ]+$/',
+            'title' => 'required||regex:/^[a-zA-Z ]+$/',Rule::unique("posts")->ignore($this->post),
             'image' => 'image|max:2000000|mimes:jpg,png,webp' ,
             'content' => 'required|min:20',
             'author' =>'nullable',

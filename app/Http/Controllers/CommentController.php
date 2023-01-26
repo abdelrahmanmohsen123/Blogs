@@ -54,10 +54,10 @@ class CommentController extends Controller
              $comment->comment = $validated['content'];
              $comment->date = date_form($validated['date'],'Y/m/d H:i:s');
              $comment->save();
-             return redirect('Dashboard/comments')->with('status',"Insert successfully");
+             return redirect('dashboard/comments')->with('status',"Insert successfully");
          }
          catch(Exception $e){
-             return redirect('Dashboard/comments')->with('failed',$e->getMessage());
+             return redirect('dashboard/comments')->with('failed',$e->getMessage());
          }
     }
 
@@ -106,10 +106,10 @@ class CommentController extends Controller
             $comment->date = date_form($validated['date'],'Y/m/d H:i:s');
            
             $comment->save();
-            return redirect('Dashboard/comments')->with('status',"update successfully");
+            return redirect('dashboard/comments')->with('status',"update successfully");
         }
         catch(Exception $e){
-            return redirect('Dashboard/comments')->with('failed',"operation failed");
+            return redirect('dashboard/comments')->with('failed',"operation failed");
         }
     }
 
@@ -124,6 +124,6 @@ class CommentController extends Controller
         $comment=Comment::find($id);
         
         $comment->delete();
-        return redirect('Dashboard/comments')->with('status',"delete successfully");
+        return redirect('dashboard/comments')->with('status',"delete successfully");
     }
 }

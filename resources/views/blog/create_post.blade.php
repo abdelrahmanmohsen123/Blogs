@@ -20,14 +20,14 @@
                   @csrf  
                   <div class="col-md-6">
                       <label for="validationCustom01" class="form-label">Title</label>
-                      <input type="text" class="form-control" id="validationCustom01" name="title" required>
+                      <input type="text" class="form-control" id="validationCustom01" name="title" value="{{old('title')}}" required >
                       <div class="valid-feedback">
                         Looks good!
                       </div>
                     </div>
                     <div class="col-md-6">
                       <label for="validationCustom01" class="form-label">Author</label>
-                      <input type="text" class="form-control" id="validationCustom01" name="author" required>
+                      <input type="text" class="form-control" id="validationCustom01" name="author" value="{{old('author')}}" required>
                       <div class="valid-feedback">
                         Looks good!
                       </div>
@@ -35,19 +35,19 @@
                     <div class="col-md-12">
                       <label for="validationCustom01" class="form-label">Content</label>
                       <textarea name="content" class="form-control"  id="validationCustom01" cols="5" rows="3">
-
+                        {{old('author')}}
                       </textarea>
                       <div class="valid-feedback">
                         Looks good!
                       </div>
                     </div>
                     <div class="mb-3 col-md-6">
-                      <label for="formFile" class="form-label">Default file input example</label>
+                      <label for="formFile" class="form-label">upload image</label>
                       <input class="form-control" type="file" name="image" id="formFile">
                     </div>
                     <div class="mb-3 col-md-6">
                       <label for="date" class="form-label">Date</label>
-                      <input class="form-control" type="date" name="date" id="date">
+                      <input class="form-control" type="date" name="date" value="{{old('date')}}" id="date">
                     </div>
                     <div class="col-12 text-center">
                       <button class="btn btn-primary" name="submit" type="submit">Add Post</button>

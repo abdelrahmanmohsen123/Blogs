@@ -25,7 +25,7 @@
 
                         <option selected disabled>Open this select menu</option>
                         @foreach ($posts as $post )
-                          <option value="{{ $post->id }}">{{ $post->title }}</option>
+                          <option  value="{{old('post_id', $post->id) }}">{{ $post->title }}</option>
 
                         @endforeach
                     
@@ -36,7 +36,7 @@
                       <select class="form-select" name="user_id" aria-label="Default select example">
                         <option selected disabled>Open this select menu</option>
                         @foreach ($users as $user )
-                          <option value="{{ $user->id }}">{{ $user->name }}</option>
+                          <option value="{{old('user_id', $user->id) }}">{{ $user->name }}</option>
 
                         @endforeach
                        
@@ -46,7 +46,7 @@
                     <div class="col-md-12">
                       <label for="validationCustom01" class="form-label">Content</label>
                       <textarea name="content" class="form-control"   id="validationCustom01" cols="5" rows="3">
-
+                       {{ old('content') }}
                       </textarea>
                       <div class="valid-feedback">
                         Looks good!
@@ -54,7 +54,7 @@
                     </div>
                     <div class="mb-3 col-md-12">
                       <label for="date" class="form-label">Date</label>
-                      <input class="form-control" name="date" type="date" id="date">
+                      <input class="form-control" name="date" type="date"  value="old('content') }}" id="date">
                     </div>
                     <div class="col-12 text-center">
                       <button class="btn btn-primary" name="submit" type="submit">Add comment</button>

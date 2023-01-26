@@ -51,11 +51,13 @@ class PostController extends Controller
 				$post->content = $validated['content'];
 				$post->date = date_form($validated['date'],'Y/m/d H:i:s');
                 $post->image = uploadImage($validated['image']);
+                // dd(getImageNameAttribute($post->image));
+
 				$post->save();
-				return redirect('Dashboard/posts')->with('status',"Insert successfully");
+				return redirect('dashboard/posts')->with('status',"Insert successfully");
 			}
 			catch(Exception $e){
-				return redirect('Dashboard/posts')->with('failed',"operation failed");
+				return redirect('dashboard/posts')->with('failed',"operation failed");
 			}
     }
 
@@ -104,10 +106,10 @@ class PostController extends Controller
                 $post->image = uploadImage($validated['image']);
             }
             $post->save();
-            return redirect('Dashboard/posts')->with('status',"update successfully");
+            return redirect('dashboard/posts')->with('status',"update successfully");
         }
         catch(Exception $e){
-            return redirect('Dashboard/posts')->with('failed',"operation failed");
+            return redirect('dashboard/posts')->with('failed',"operation failed");
         }
 
 
@@ -127,7 +129,7 @@ class PostController extends Controller
 
         }
         $post->delete();
-        return redirect('Dashboard/posts')->with('status',"delete successfully");
+        return redirect('dashboard/posts')->with('status',"delete successfully");
 
     }
 }
